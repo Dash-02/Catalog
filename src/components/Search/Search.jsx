@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import './Search.css';
-import iconSearch from '../../assets/search.svg';
+import iconSearch from '../../assets/icons/search.svg';
 
 function Search() {
 
