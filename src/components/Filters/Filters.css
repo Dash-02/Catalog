@@ -103,14 +103,34 @@ span {
 
 .label_wrapper {
     display: flex;
-    /* justify-content: ceter;
-    align-items: center;n */
+    align-items: center; 
 
     border-radius: 7px;
     border: 1px solid #99A8B2;
 
+    width: 96px;
+    height: 28px;
+
+}
+
+.label_wrapper:first-child {
+    margin-right: 12px;
+}
+
+.label_wrapper span {
+    font-size: 10px;
+    margin: 4px;
+}
+
+.label_wrapper input {
+    font-size: 12px;
 }
 
 .label_sum {
     width: 50%;
+}
+
+.filter_content {
+    display: flex;
+    justify-content: space-between;
 }

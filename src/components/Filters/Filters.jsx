@@ -40,32 +40,108 @@ function Filter() {
                 <div className="filter_block">
                     <div className="filter_item">
                         <span>Стоимость</span>
-
-                        <label className="label_wrapper">
-                            <span>от</span>
-                            <input type="number" min={minCost} max={maxCost}/>
-                        </label>
-                        <label className="label_wrapper">
-                            <span>до</span>
-                            <input type="number" min={minCost} max={maxCost}/>
-                        </label>
+                        
+                        <div className="filter_content">
+                            <label className="label_wrapper">
+                                <span>от</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                            <label className="label_wrapper">
+                                <span>до</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
                     
-                        <button className='reload_btn'>
-                            <img src={icoReload} alt="" />
-                        </button>
+                            <button className='reload_btn'>
+                                <img src={icoReload} alt="" />
+                            </button>
+                        </div>
+
                     </div>
 
                     <div className="filter_item">
                         <span>CPM</span>
-                        <button className='filt_btn' >
-                            Не выбрано
-                            <img src={icoPoly} alt="" />
-                        </button>
-                        <button className='reload_btn'>
-                            <img src={icoReload} alt="" />
-                        </button>
+                        
+                        <div className="filter_content">
+                            <label className="label_wrapper">
+                                <span>от</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                            <label className="label_wrapper">
+                                <span>до</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                    
+                            <button className='reload_btn'>
+                                <img src={icoReload} alt="" />
+                            </button>
+                        </div>
+
                     </div>
                 </div>
+
+                <div className="filter_block">
+                    <div className="filter_item">
+                        <span>Подписчиков</span>
+                        
+                        <div className="filter_content">
+                            <label className="label_wrapper">
+                                <span>от</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                            <label className="label_wrapper">
+                                <span>до</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                    
+                            <button className='reload_btn'>
+                                <img src={icoReload} alt="" />
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div className="filter_item">
+                        <span>Просмотров на пост</span>
+                        
+                        <div className="filter_content">
+                            <label className="label_wrapper">
+                                <span>от</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                            <label className="label_wrapper">
+                                <span>до</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                    
+                            <button className='reload_btn'>
+                                <img src={icoReload} alt="" />
+                            </button>
+                        </div>
+                        
+                    </div>
+
+                    <div className="filter_item">
+                        <span>Вовлеченность (ERR)</span>
+                        
+                        <div className="filter_content">
+                            <label className="label_wrapper">
+                                <span>от</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                            <label className="label_wrapper">
+                                <span>до</span>
+                                <input type="number" min={minCost} max={maxCost}/>
+                            </label>
+                    
+                            <button className='reload_btn'>
+                                <img src={icoReload} alt="" />
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
             </div>
             <img className='filter_ico' src={icoFilter} alt="filter" />
         </div>
