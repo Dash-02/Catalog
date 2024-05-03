@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import './Search.css';
+import style from './Search.module.scss'
 import iconSearch from '../../assets/icons/search.svg';
 
 function Search() {
@@ -25,8 +25,8 @@ function Search() {
 	// }
 
     return(
-        <div className='search'>
-            <img className='img-search' src={iconSearch} alt="search" />
+        <div className={style.search}>
+            <img className={style.img_search} src={iconSearch} alt="search" />
             <input 
                 type="text" 
                 // onChange={(e) => onChangeText(e)} 

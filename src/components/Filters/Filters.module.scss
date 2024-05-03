@@ -1,7 +1,7 @@
 .filter {
     width: 270px;
     height: 795px;
-    position: fixed;
+    /* position: fixed; */
 
     padding: 20px;
     border-radius: 15px;
@@ -27,8 +27,6 @@
 .filter_wrapper {   
     /* width: 80%;
     height: 90%; */
-
-    
 }
 
 .filter_block {
@@ -37,6 +35,14 @@
     border-bottom: 1px solid #99A8B24D;
     /* padding: 5%; */
     margin-bottom: 20px;
+}
+
+.filter_block:nth-of-type(3) {
+    height: auto; 
+}
+
+.filter_block:nth-of-type(4) {
+    width: auto; 
 }
 
 .filter_item {
@@ -80,6 +86,11 @@ button {
 
     display: flex;
     align-items: center;
+
+    img {
+        width: 12px;
+        height: 12px;
+    }
 }
 
 .reload_btn:active img {
@@ -110,7 +121,6 @@ span {
 
     width: 96px;
     height: 28px;
-
 }
 
 .label_wrapper:first-child {
@@ -126,6 +136,16 @@ span {
     font-size: 12px;
 }
 
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .label_sum {
     width: 50%;
 }
@@ -133,4 +153,60 @@ span {
 .filter_content {
     display: flex;
     justify-content: space-between;
+}
+
+.wrapper_radio_btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    margin-bottom: 5%;
+    width: auto;
+}
+
+.label_radio {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    margin-left: 5%;
+    
+    img {
+        width: 11px;
+        height: 11px;
+
+        margin-left: 5px;
+    }
+}
+
+img::nth-of-type(3) {
+    width: 6px;
+    height: 7px;
+}
+
+.wrapper_radio_btn input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  
+    border-radius: 3px;
+    width: 14px;
+    height: 15px;
+  
+    border: 1px solid #99A8B2;
+    transition: 0.2s all linear;
+    outline: none;
+
+    margin: 0px;
+}
+
+.wrapper_radio_btn input:checked {
+    background: #99A8B2;
+}
+
+.round {
+    border-radius: 50%;
+    height: 4px;
+    width: 4px;
+    background: #1DD100;
 }
