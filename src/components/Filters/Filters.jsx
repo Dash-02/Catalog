@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import style from './Filters.module.scss';
 import icoFilter from '../../assets/icons/filter.svg';
 import icoPoly from '../../assets/icons/polygon.svg';
-import icoReload from '../../assets/icons/reloadd.svg';
+import icoReload from '../../assets/icons/reload_.svg';
 import icoHeart from '../../assets/icons/favorite_heart.svg';
 import icoLock from '../../assets/icons/lock_open.svg';
 import icoVerify from '../../assets/icons/check_verify.svg';

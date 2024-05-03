@@ -86,15 +86,10 @@ button {
 
     display: flex;
     align-items: center;
-
-    img {
-        width: 12px;
-        height: 12px;
-    }
 }
 
 .reload_btn:active img {
-    animation: rotate 0.25s linear;
+    animation: rotate 1s linear;
 }
 
 @keyframes rotate {
@@ -168,8 +163,13 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
     align-items: center;
     flex-direction: row;
-
+    
     margin-left: 5%;
+    
+    img::nth-of-type(3) {
+        width: 6px;
+        height: 7px;
+    }
     
     img {
         width: 11px;
@@ -177,11 +177,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
         margin-left: 5px;
     }
-}
-
-img::nth-of-type(3) {
-    width: 6px;
-    height: 7px;
 }
 
 .wrapper_radio_btn input {
@@ -201,7 +196,11 @@ img::nth-of-type(3) {
 }
 
 .wrapper_radio_btn input:checked {
-    background: #99A8B2;
+    background-color: #00A5E9;
+    border: #00A5E9;
+    background-image: url('../../assets/icons/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .round {
@@ -209,4 +208,5 @@ img::nth-of-type(3) {
     height: 4px;
     width: 4px;
     background: #1DD100;
+    margin-left: 5px;
 }
