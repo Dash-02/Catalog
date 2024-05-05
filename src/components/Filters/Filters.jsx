@@ -2,18 +2,37 @@ import React, {useState} from 'react';
 
 import style from './Filters.module.scss';
 import icoFilter from '../../assets/icons/filter.svg';
-import icoPoly from '../../assets/icons/polygon.svg';
 import icoReload from '../../assets/icons/reload.svg';
 import icoHeart from '../../assets/icons/favorite_heart.svg';
 import icoLock from '../../assets/icons/lock_open.svg';
 import icoVerify from '../../assets/icons/check_verify.svg';
 import icoHeartStroke from '../../assets/icons/favorite.svg';
-import icoSave from '../../assets/icons/save99.svg';
+import icoSave from '../../assets/icons/save.svg';
+
+import DropDown from '../DropDown/DropDown.jsx';
 
 function Filter() {
 
-    let minCost = 0;
-    let maxCost = 1000;
+    const [minCost, setMinCost] = useState(0);
+    const [maxCost, setMaxCost] = useState(1000);
+
+    const categoryList = [
+        'Telegram', 
+        'Новости и СМИ', 
+        'Литература', 
+        'Криптовалюта', 
+        'Искусство', 
+        'Путешествия', 
+        'Юмор и приколы'
+    ];
+    const default_argCategory = 'Не выбрано';
+
+    const langList = [
+        'Русский', 
+        'Английский', 
+        'Арабский'
+    ];
+    const default_argLang = 'Не выбрано';
 
     return(
         <div className={style.filter}>
@@ -23,20 +42,14 @@ function Filter() {
                 <div className={style.filter_block}>
                     <div className={style.filter_item}>
                         <span>Категория канала</span>
-                        <button className={style.filt_btn} >
-                            Не выбрано
-                            <img src={icoPoly} alt="" />
-                        </button>
-                        <button className={style.reload_btn}>
-                            <img src={icoReload} alt="" />
-                        </button>
+                        <DropDown default_arg={default_argCategory} args={categoryList} />
                     </div>
 
                     <div className={style.filter_item}>
                         <span>Язык канала</span>
                         <button className={style.filt_btn} >
                             Не выбрано
-                            <img src={icoPoly} alt="" />
+                            <div className={style.polygone}></div>
                         </button>
                         <button className={style.reload_btn}>
                             <img src={icoReload} alt="" />

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import dropdownArrow from '../../assets/sort-amount-down.svg'
 import style from './DropDown.module.scss'
+import icoReload from '../../assets/icons/reload.svg';
 
 const DropDown = ({ default_arg, args }) => {
 	const [clicked, setClicked] = useState(false)
@@ -28,7 +28,6 @@ const DropDown = ({ default_arg, args }) => {
 
 	const handleClickedElement = (element, index) => {
 		setClicked(true)
-		// Если клик происходит на уже выбранный элемент, сбрасываем его состояние
 		if (selectedElementIndex === index) {
 			setSelectedElement('')
 
@@ -44,21 +43,14 @@ const DropDown = ({ default_arg, args }) => {
 		setClickedHidden(!clickedHidden)
 	}
 
+	const handleReload = () => {
+        setSelectedElement('');
+        setSelectedElementIndex(null);
+        setClicked(false);
+    };
+
 	return (
 		<div className={style.wrapperRootDropDown}>
-			<div>
-				<img
-					className={
-						clickedHidden
-							? `${style.blockArrowImg}`
-							: `${style.rotatedArrowImg}`
-					}
-					width={24}
-					height={24}
-					src={dropdownArrow}
-					alt='arrowdropdown'
-				/>
-			</div>
 			<div ref={catMenu} className={style.wrapperDropDown}>
 				<button className={style.btnSort} onClick={handleClickedHidden}>
 					{!clicked ? default_arg : selectedElement}
@@ -85,12 +77,15 @@ const DropDown = ({ default_arg, args }) => {
 									color: selectedElementIndex === index ? '#fff' : '#99a8b2',
 								}}
 							>
-								{element}
+							{element}
 							</li>
 						))}
 					</ul>
 				)}
 			</div>
+			<button className={style.reload_btn} onClick={handleReload}>
+				<img src={icoReload} alt="" />
+            </button>
 		</div>
 	)
 }
