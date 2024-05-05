@@ -1,3 +1,5 @@
+@import '../../scss/_vars.scss';
+
 .filter {
     width: 270px;
     height: 835px;
@@ -6,7 +8,7 @@
     padding: 20px;
     border-radius: 15px;
 
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.149);
+    box-shadow: var(--shadow);
 
     display: flex;
     justify-content: space-around;
@@ -14,32 +16,29 @@
 
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    color: #99A8B2;
+    color: var(--color-light-gray);
 }
 
 .filter_ico {
     width: 12px;
     height: 12px;
-
-    /* margin-top: 4%; */
 }
 
 .filter_wrapper {   
-    /* width: 80%;
-    height: 90%; */
+
 }
 
 .filter_block {
     width: 90%;
     height: 150px;
-    border-bottom: 1px solid #99A8B24D;
-    /* padding: 5%; */
+    border-bottom: 1px solid var(--color-dark-gray);
+    
     margin-bottom: 20px;
 }
 
 .filter_block:nth-of-type(3) {
     height: auto;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
 }
 
 .filter_block:nth-of-type(4) {
@@ -53,8 +52,6 @@
     align-items: center;
     flex-wrap: wrap;
 
-    /* margin-top: 1%;
-    margin-bottom: 5%; */
     margin-top: 3px;
     margin-bottom: 15px;
 }
@@ -71,7 +68,7 @@ button {
     background: none;
 
     border-radius: 7px;
-    border: 1px solid #99A8B2;
+    border: 1px solid var(--color-light-gray);
 
     font-size: 12px;
     font-family: inherit;
@@ -105,7 +102,6 @@ button {
 }
 
 span {
-    /* margin-bottom: 3%; */
     margin-bottom: 9px;
 }
 
@@ -114,7 +110,7 @@ span {
     align-items: center; 
 
     border-radius: 7px;
-    border: 1px solid #99A8B2;
+    border: 1px solid var(--color-light-gray);
 
     width: 96px;
     height: 28px;
@@ -182,7 +178,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 14px;
     height: 15px;
   
-    border: 1px solid #99A8B2;
+    border: 1px solid var(--color-light-gray);
     transition: 0.2s all linear;
     outline: none;
 
@@ -190,8 +186,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .wrapper_radio_btn input:checked {
-    background-color: #00A5E9;
-    border: #00A5E9;
+    background-color: var(--color-light-blue);
+    border: var(--color-light-blue);
     background-image: url('../../assets/icons/check.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -201,7 +197,7 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 50%;
     height: 4px;
     width: 4px;
-    background: #1DD100;
+    background: var(--color-light-green);
     margin-left: 5px;
 }
 
@@ -214,7 +210,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: inherit;
 
     padding: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 
     img {
         margin-right: 8px;
