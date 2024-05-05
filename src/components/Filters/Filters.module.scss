@@ -1,6 +1,6 @@
 .filter {
     width: 270px;
-    height: 795px;
+    height: 835px;
     /* position: fixed; */
 
     padding: 20px;
@@ -38,11 +38,13 @@
 }
 
 .filter_block:nth-of-type(3) {
-    height: auto; 
+    height: auto;
+    padding-bottom: 8px;
 }
 
 .filter_block:nth-of-type(4) {
-    width: auto; 
+    width: auto;
+    padding-bottom: 8px;
 }
 
 .filter_item {
@@ -89,7 +91,7 @@ button {
 }
 
 .reload_btn:active img {
-    animation: rotate 1s linear;
+    animation: rotate 0.25s linear;
 }
 
 @keyframes rotate {
@@ -155,7 +157,7 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: center;
     flex-direction: row;
 
-    margin-bottom: 5%;
+    margin-bottom: 4%;
     width: auto;
 }
 
@@ -165,16 +167,8 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: row;
     
     margin-left: 5%;
-    
-    img::nth-of-type(3) {
-        width: 6px;
-        height: 7px;
-    }
-    
+ 
     img {
-        width: 11px;
-        height: 11px;
-
         margin-left: 5px;
     }
 }
@@ -209,4 +203,23 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 4px;
     background: #1DD100;
     margin-left: 5px;
+}
+
+.btn_search {
+    background: none;
+    border-style: none;
+
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+
+    padding: 0;
+    margin-bottom: 5px;
+
+    img {
+        margin-right: 8px;
+    }
+
+    display: flex;
+    align-items: center;
 }
