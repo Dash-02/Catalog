@@ -47,13 +47,14 @@ function Filter() {
 
                     <div className={style.filter_item}>
                         <span>Язык канала</span>
-                        <button className={style.filt_btn} >
+                        {/* <button className={style.filt_btn} >
                             Не выбрано
                             <div className={style.polygone}></div>
                         </button>
                         <button className={style.reload_btn}>
                             <img src={icoReload} alt="" />
-                        </button>
+                        </button> */}
+                        <DropDown className={style.drop_down_lang} default_arg={default_argLang} args={langList} />
                     </div>
                 </div>
 
