@@ -13,6 +13,26 @@ import {data} from '../FakeData/FakeData.js';
 import DropDown from '../DropDownFilt/DropDownFilt.jsx';
 
 function Filter() {
+    
+    const categoryList = [
+        'Telegram', 
+        'Новости и СМИ', 
+        'Литература', 
+        'Криптовалюта', 
+        'Искусство', 
+        'Путешествия', 
+        'Юмор и приколы'
+    ];
+    const default_argCategory = 'Не выбрано';
+    
+    const langList = [
+        'Русский', 
+        'Английский', 
+        'Арабский'
+    ];
+    const default_argLang = 'Не выбрано';
+
+    // For block-2 and block-3
     const [filters, setFilters] = useState({
         price: { min: null, max: null },
         cpm: { min: null, max: null },
@@ -62,23 +82,28 @@ function Filter() {
         updateRange(key);
     };
 
-    const categoryList = [
-        'Telegram', 
-        'Новости и СМИ', 
-        'Литература', 
-        'Криптовалюта', 
-        'Искусство', 
-        'Путешествия', 
-        'Юмор и приколы'
-    ];
-    const default_argCategory = 'Не выбрано';
+    // For block-4 and block-5
+    const [like, setLike] = useState(false);
+    const [online, setOnline] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [verify, setVerify] = useState(false);
+    const [check, setCheck] = useState(false);
 
-    const langList = [
-        'Русский', 
-        'Английский', 
-        'Арабский'
-    ];
-    const default_argLang = 'Не выбрано';
+    // Обработчики изменения состояний радио-кнопок
+    const handleLikeChange = () => setLike(!like);
+    const handleOnlineChange = () => setOnline(!online);
+    const handleOpenChange = () => setOpen(!open);
+    const handleVerifyChange = () => setVerify(!verify);
+    const handleCheckChange = () => setCheck(!check);
+
+    // Обработчики для кнопок "Сохранить поиск" и "Восстановить поиск"
+    const handleSaveSearch = () => {
+        // Действия при нажатии на кнопку "Сохранить поиск"
+    };
+
+    const handleRestoreSearch = () => {
+        // Действия при нажатии на кнопку "Восстановить поиск"
+    };
 
     return(
         <div className={style.filter}>
@@ -266,7 +291,12 @@ function Filter() {
                 {/*=========== Block 4 ===========*/}
                 <div className={style.filter_block}>
                     <div className={style.wrapper_radio_btn}>
-                        <input type="radio" id="like" />
+                        <input 
+                            type="radio" 
+                            id="like" 
+                            checked={like}
+                            onChange={handleLikeChange}
+                        />
                         <label for="like" className={style.label_radio}>
                             В избранном
                             <img src={icoHeart} alt="" />
@@ -274,7 +304,12 @@ function Filter() {
                     </div>
 
                     <div className={style.wrapper_radio_btn}>
-                        <input type="radio" id="online" />
+                        <input 
+                            type="radio" 
+                            id="online" 
+                            checked={online}
+                            onChange={handleOnlineChange}
+                        />
                         <label for="online" className={style.label_radio}>
                             Администратор онлайн
                             <div className={style.round}></div>
@@ -282,7 +317,12 @@ function Filter() {
                     </div>
 
                     <div className={style.wrapper_radio_btn}>
-                        <input type="radio" id="open" />
+                        <input 
+                            type="radio" 
+                            id="open" 
+                            checked={open}
+                            onChange={handleOpenChange}
+                        />
                         <label for="open" className={style.label_radio}>
                             Открытый канал
                             <img src={icoLock} alt="" />
@@ -290,7 +330,12 @@ function Filter() {
                     </div>
 
                     <div className={style.wrapper_radio_btn}>
-                        <input type="radio" id="verify" />
+                        <input 
+                            type="radio" 
+                            id="verify" 
+                            checked={verify}
+                            onChange={handleVerifyChange}
+                        />
                         <label for="verify" className={style.label_radio}>
                             Верифицированный канал
                             <img src={icoVerify} alt="" />
@@ -298,7 +343,12 @@ function Filter() {
                     </div>
 
                     <div className={style.wrapper_radio_btn}>
-                        <input type="radio" id="check" />
+                        <input 
+                            type="radio" 
+                            id="check" 
+                            checked={check}
+                            onChange={handleCheckChange}
+                        />
                         <label for="check" className={style.label_radio}>
                             Проверенный канал
                         </label>
@@ -308,12 +358,12 @@ function Filter() {
 
                 {/*=========== Block 5 ===========*/}
                 <div className={style.wrapper_search}>
-                    <button className={style.btn_search}>
+                    <button className={style.btn_search} onClick={handleSaveSearch}>
                         <img src={icoHeartStroke} alt="" />
                         Сохранить поиск
                     </button>
 
-                    <button className={style.btn_search}>
+                    <button className={style.btn_search} onClick={handleRestoreSearch}>
                         <img src={icoSave} alt="" />
                         Восстановить поиск
                     </button>
