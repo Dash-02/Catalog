@@ -13,130 +13,53 @@ import {data} from '../FakeData/FakeData.js';
 import DropDown from '../DropDownFilt/DropDownFilt.jsx';
 
 function Filter() {
-    // ===== default_price ===== //
-    const [priceRange, setPriceRange] = useState({ min: null, max: null });
+    const [filters, setFilters] = useState({
+        price: { min: null, max: null },
+        cpm: { min: null, max: null },
+        subscribers: { min: null, max: null },
+        views: { min: null, max: null },
+        err: { min: null, max: null }
+    });
     const minCost = 0;
     const maxCost = 100000;
 
     useEffect(() => {
-        updatePriceRange();
-        updateCpmRange();
-        updateSubscribeRange();
-        updateViewsRange();
-        updateErrRange();
+        Object.keys(filters).forEach(key => {
+            updateRange(key);
+        });
     }, []);
 
-    const updatePriceRange = () => {
-        const prices = data.map(item => item.default_price);
-        const min = Math.min(...prices);
-        const max = Math.max(...prices);
-        setPriceRange({ min, max });
+    const updateRange = (key) => {
+        let values;
+        if (key === 'price') {
+            values = data.map(item => item.default_price);
+        } else if (key === 'cpm') {
+            values = data.map(item => item.CPM);
+        } else if (key === 'subscribers') {
+            values = data.map(item => item.count_subscribers);
+        } else if (key === 'views') {
+            values = data.map(item => item.count_views);
+        } else if (key === 'err') {
+            values = data.map(item => item.ERR);
+        }
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        setFilters(prevFilters => ({ ...prevFilters, [key]: { min, max } }));
     };
 
-    const handlePriceChange = (event) => {
-        const price = event.target.value;
-        setPriceRange(prevState => ({ ...prevState, min: price }));
+    const handleRangeChange = (key, field) => (event) => {
+        const value = event.target.value;
+        setFilters(prevFilters => ({
+            ...prevFilters,
+            [key]: {
+                ...prevFilters[key],
+                [field]: value
+            }
+        }));
     };
 
-    const handleMaxPriceChange = (event) => {
-        const price = event.target.value;
-        setPriceRange(prevState => ({ ...prevState, max: price }));
-    };
-    
-    const handleReload = () => {
-        updatePriceRange();
-    };
-
-    // ===== CPM ====== //
-    const [cpmRange, setCpmRange] = useState({ min: null, max: null });
-    const updateCpmRange = () => {
-        const cpm = data.map(item => item.CPM);
-        const min = Math.min(...cpm);
-        const max = Math.max(...cpm);
-        setCpmRange({ min, max });
-    };
-
-    const handleCpmChange = (event) => {
-        const cpm = event.target.value;
-        setCpmRange(prevState => ({ ...prevState, min: cpm }));
-    };
-
-    const handleMaxCpmChange = (event) => {
-        const cpm = event.target.value;
-        setCpmRange(prevState => ({ ...prevState, max: cpm }));
-    };
-    
-    const handleReloadCpm = () => {
-        updateCpmRange();
-    };
-
-    // ===== count_subscribers ===== //
-    const [subscribeRange, setSubscribeRange] = useState({ min: null, max: null });
-    const updateSubscribeRange = () => {
-        const subscribe = data.map(item => item.count_subscribers);
-        const min = Math.min(...subscribe);
-        const max = Math.max(...subscribe);
-        setSubscribeRange({ min, max });
-    };
-
-    const handleSubscribeChange = (event) => {
-        const subscribe = event.target.value;
-        setSubscribeRange(prevState => ({ ...prevState, min: subscribe }));
-    };
-
-    const handleMaxSubscribeChange = (event) => {
-        const subscribe = event.target.value;
-        setSubscribeRange(prevState => ({ ...prevState, max: subscribe }));
-    };
-
-    const handleReloadSubscribe = () => {
-        updateSubscribeRange();
-    };
-
-    // ===== count_views ===== //
-    const [viewsRange, setViewsRange] = useState({ min: null, max: null });
-    const updateViewsRange = () => {
-        const views = data.map(item => item.count_views);
-        const min = Math.min(...views);
-        const max = Math.max(...views);
-        setViewsRange({ min, max });
-    };
-
-    const handleViewsChange = (event) => {
-        const views = event.target.value;
-        setViewsRange(prevState => ({ ...prevState, min: views }));
-    };
-
-    const handleMaxViewsChange = (event) => {
-        const views = event.target.value;
-        setViewsRange(prevState => ({ ...prevState, max: views }));
-    };
-
-    const handleReloadViews = () => {
-        updateViewsRange();
-    };
-    
-    // ===== ERR ===== //
-    const [errRange, setErrRange] = useState({ min: null, max: null });
-    const updateErrRange = () => {
-        const err = data.map(item => item.ERR);
-        const min = Math.min(...err);
-        const max = Math.max(...err);
-        setErrRange({ min, max });
-    };
-
-    const handleErrChange = (event) => {
-        const err = event.target.value;
-        setErrRange(prevState => ({ ...prevState, min: err }));
-    };
-
-    const handleMaxErrChange = (event) => {
-        const err = event.target.value;
-        setErrRange(prevState => ({ ...prevState, max: err }));
-    };
-
-    const handleReloadErr = () => {
-        updateErrRange();
+    const handleReload = (key) => () => {
+        updateRange(key);
     };
 
     const categoryList = [
@@ -186,8 +109,8 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={priceRange.min || ''} 
-                                    onChange={handlePriceChange} 
+                                    value={filters.price.min !== null ? filters.price.min : ''}
+                                    onChange={handleRangeChange('price', 'min')} 
                                 />
                             </label>
                             <label className={style.label_wrapper}>
@@ -196,13 +119,13 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={priceRange.max || ''}
-                                    onChange={handleMaxPriceChange}
+                                    value={filters.price.max || ''}
+                                    onChange={handleRangeChange('price', 'max')}
                                 />
                             </label>
                     
-                            <button className={style.reload_btn}>
-                                <img src={icoReload} onClick={handleReload} alt="" />
+                            <button className={style.reload_btn} onClick={handleReload('price')}>
+                                <img src={icoReload} alt="" />
                             </button>
                         </div>
 
@@ -218,8 +141,8 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={cpmRange.min || ''}
-                                    onChange={handleCpmChange}
+                                    value={filters.cpm.min || ''}
+                                onChange={handleRangeChange('cpm', 'min')}
                                 />
                             </label>
                             <label className={style.label_wrapper}>
@@ -228,12 +151,12 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={cpmRange.max || ''}
-                                    onChange={handleMaxCpmChange}
+                                    value={filters.cpm.max || ''}
+                                onChange={handleRangeChange('cpm', 'max')}
                                 />
                             </label>
                     
-                            <button className={style.reload_btn} onClick={handleReloadCpm}>
+                            <button className={style.reload_btn} onClick={handleReload('cpm')}>
                                 <img src={icoReload} alt="" />
                             </button>
                         </div>
@@ -253,8 +176,8 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={subscribeRange.min || ''}
-                                    onChange={handleSubscribeChange}
+                                    value={filters.subscribers.min || ''}
+                                    onChange={handleRangeChange('subscribers', 'min')}
                                 />
                             </label>
                             <label className={style.label_wrapper}>
@@ -263,12 +186,12 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={subscribeRange.max || ''}
-                                    onChange={handleMaxSubscribeChange}
+                                    value={filters.subscribers.max || ''}
+                                    onChange={handleRangeChange('subscribers', 'max')}
                                 />
                             </label>
                     
-                            <button className={style.reload_btn} onClick={handleReloadSubscribe}>
+                            <button className={style.reload_btn} onClick={handleReload('subscribers')}>
                                 <img src={icoReload} alt="" />
                             </button>
                         </div>
@@ -285,8 +208,8 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={viewsRange.min || ''}
-                                    onChange={handleViewsChange}
+                                    value={filters.views.min || ''}
+                                    onChange={handleRangeChange('views', 'min')}
                                 />
                             </label>
                             <label className={style.label_wrapper}>
@@ -295,12 +218,12 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={viewsRange.max || ''}
-                                    onChange={handleMaxViewsChange}
+                                    value={filters.views.max || ''}
+                                    onChange={handleRangeChange('views', 'max')}
                                 />
                             </label>
                     
-                            <button className={style.reload_btn} onClick={handleReloadViews}>
+                            <button className={style.reload_btn} onClick={handleReload('views')}>
                                 <img src={icoReload} alt="" />
                             </button>
                         </div>
@@ -317,8 +240,8 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={errRange.min || ''}
-                                    onChange={handleErrChange}
+                                    value={filters.err.min || ''}
+                                    onChange={handleRangeChange('err', 'min')}
                                 />
                             </label>
                             <label className={style.label_wrapper}>
@@ -327,12 +250,12 @@ function Filter() {
                                     type="number" 
                                     min={minCost} 
                                     max={maxCost}
-                                    value={errRange.max || ''}
-                                    onChange={handleMaxErrChange}
+                                    value={filters.err.max || ''}
+                                    onChange={handleRangeChange('err', 'max')}
                                 />
                             </label>
                     
-                            <button className={style.reload_btn} onClick={handleReloadErr}>
+                            <button className={style.reload_btn} onClick={handleReload('err')}>
                                 <img src={icoReload} alt="" />
                             </button>
                         </div>
