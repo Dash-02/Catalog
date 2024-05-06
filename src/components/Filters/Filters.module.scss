@@ -168,6 +168,7 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
     align-items: center;
     flex-direction: row;
+    cursor: pointer;
     
     margin-left: 5%;
  
@@ -190,6 +191,7 @@ input[type="number"]::-webkit-outer-spin-button {
     outline: none;
 
     margin: 0px;
+    cursor: pointer;
 }
 
 .wrapper_radio_btn input:checked {
