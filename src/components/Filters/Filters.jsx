@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import style from './Filters.module.scss';
 import icoFilter from '../../assets/icons/filter.svg';
@@ -8,13 +8,40 @@ import icoLock from '../../assets/icons/lock_open.svg';
 import icoVerify from '../../assets/icons/check_verify.svg';
 import icoHeartStroke from '../../assets/icons/favorite.svg';
 import icoSave from '../../assets/icons/save.svg';
+import {data} from '../FakeData/FakeData.js';
 
-import DropDown from '../DropDown/DropDown.jsx';
+import DropDown from '../DropDownFilt/DropDownFilt.jsx';
 
 function Filter() {
 
-    const [minCost, setMinCost] = useState(0);
-    const [maxCost, setMaxCost] = useState(1000);
+    const [priceRange, setPriceRange] = useState({ min: null, max: null });
+    const minCost = 0;
+    const maxCost = 100000;
+
+    useEffect(() => {
+        updatePriceRange();
+    }, []);
+
+    const updatePriceRange = () => {
+        const prices = data.map(item => item.default_price);
+        const min = Math.min(...prices);
+        const max = Math.max(...prices);
+        setPriceRange({ min, max });
+    };
+
+    const handlePriceChange = (event) => {
+        const price = event.target.value;
+        setPriceRange(prevState => ({ ...prevState, min: price }));
+    };
+
+    const handleMaxPriceChange = (event) => {
+        const price = event.target.value;
+        setPriceRange(prevState => ({ ...prevState, max: price }));
+    };
+    
+    const handleReload = () => {
+        updatePriceRange();
+    };
 
     const categoryList = [
         'Telegram', 
@@ -47,13 +74,6 @@ function Filter() {
 
                     <div className={style.filter_item}>
                         <span>Язык канала</span>
-                        {/* <button className={style.filt_btn} >
-                            Не выбрано
-                            <div className={style.polygone}></div>
-                        </button>
-                        <button className={style.reload_btn}>
-                            <img src={icoReload} alt="" />
-                        </button> */}
                         <DropDown className={style.drop_down_lang} default_arg={default_argLang} args={langList} />
                     </div>
                 </div>
@@ -66,15 +86,27 @@ function Filter() {
                         <div className={style.filter_content}>
                             <label className={style.label_wrapper}>
                                 <span>от</span>
-                                <input type="number" min={minCost} max={maxCost}/>
+                                <input 
+                                    type="number" 
+                                    min={minCost} 
+                                    max={maxCost}
+                                    value={priceRange.min || ''} 
+                                    onChange={handlePriceChange} 
+                                />
                             </label>
                             <label className={style.label_wrapper}>
                                 <span>до</span>
-                                <input type="number" min={minCost} max={maxCost}/>
+                                <input 
+                                    type="number" 
+                                    min={minCost} 
+                                    max={maxCost}
+                                    value={priceRange.max || ''}
+                                    onChange={handleMaxPriceChange}
+                                />
                             </label>
                     
                             <button className={style.reload_btn}>
-                                <img src={icoReload} alt="" />
+                                <img src={icoReload} onClick={handleReload} alt="" />
                             </button>
                         </div>
 
@@ -93,7 +125,7 @@ function Filter() {
                                 <input type="number" min={minCost} max={maxCost}/>
                             </label>
                     
-                            <button className={style.reload_btn}>
+                            <button className={style.reload_btn} onClick={handleReload}>
                                 <img src={icoReload} alt="" />
                             </button>
                         </div>
