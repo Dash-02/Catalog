@@ -297,7 +297,7 @@ function Filter() {
                             checked={like}
                             onChange={handleLikeChange}
                         />
-                        <label for="like" className={style.label_radio}>
+                        <label htmlFor="like" className={style.label_radio}>
                             В избранном
                             <img src={icoHeart} alt="" />
                         </label>
@@ -310,7 +310,7 @@ function Filter() {
                             checked={online}
                             onChange={handleOnlineChange}
                         />
-                        <label for="online" className={style.label_radio}>
+                        <label htmlFor="online" className={style.label_radio}>
                             Администратор онлайн
                             <div className={style.round}></div>
                         </label>
@@ -323,7 +323,7 @@ function Filter() {
                             checked={open}
                             onChange={handleOpenChange}
                         />
-                        <label for="open" className={style.label_radio}>
+                        <label htmlFor="open" className={style.label_radio}>
                             Открытый канал
                             <img src={icoLock} alt="" />
                         </label>
@@ -336,7 +336,7 @@ function Filter() {
                             checked={verify}
                             onChange={handleVerifyChange}
                         />
-                        <label for="verify" className={style.label_radio}>
+                        <label htmlFor="verify" className={style.label_radio}>
                             Верифицированный канал
                             <img src={icoVerify} alt="" />
                         </label>
@@ -349,7 +349,7 @@ function Filter() {
                             checked={check}
                             onChange={handleCheckChange}
                         />
-                        <label for="check" className={style.label_radio}>
+                        <label htmlFor="check" className={style.label_radio}>
                             Проверенный канал
                         </label>
                     </div>
