@@ -1,0 +1,26 @@
+.switchWrapper input {
+    // background-image: url('../../assets/icons/moon1.svg');
+    background-color: var(--color-switch);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border-radius: 45px;
+    width: 46px;
+    height: 24px;
+  
+    border: 1px solid var(--color-switch);
+    transition: 0.2s all linear;
+    outline: none;
+
+    margin: 0px;
+    cursor: pointer;
+}
+
+.switchWrapper input:checked {
+    background-color: var(--color-light-blue);
+    border: var(--color-light-blue);
+    background-image: url('../../assets/icons/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
