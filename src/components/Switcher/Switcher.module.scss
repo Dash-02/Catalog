@@ -28,19 +28,19 @@
     width: 1.125rem;
     cursor: pointer;
     transition: 0.5s ease-in-out;
-    img {
-        width: 0.6875rem;
-        height: 0.6875rem;
-    }
 }
 
 .round:checked {
     background-image: url('../../assets/icons/moon.svg');
     background-color: var(--color-white);
 
-    translate: -125%;
+    transform: translateX(-125%);
     .switchWrapper {
         background-color: var(--color-switch);
         justify-content: start;
     }
+}
+
+.switchWrapper input:checked + .round {
+    background-color: var(--checked-switch);
 }
