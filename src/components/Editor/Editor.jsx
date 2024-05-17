@@ -2,6 +2,8 @@ import { useState } from 'react'
 import DropDowmFilt from '../DropDownFilt/DropDownFilt.jsx';
 import style from './Editor.module.scss';
 
+import iconAdvix from '../../assets/img/advix_photo.png';
+
 export const Editor = () => {
 
     const categoryList = [
@@ -26,15 +28,19 @@ export const Editor = () => {
     <>
         <div className={style.editor}>
             <header className={style.headerEditor}>
-                <img src="" alt="" />
-                <span>Advix: новости</span>
-                {/* <img src="" alt="" /> //должно пропадать когда выполнены условия */}
-                <button className={style.btnPublish}>
-                    ОПУБЛИКОВАТЬ
-                </button>
-                <button className={style.btnDraft}>
-                    ЧЕРНОВИК
-                </button>
+                <div className={style.logoEditor}>
+                    <img src={iconAdvix} alt="" />
+                    <span>Advix: новости</span>
+                </div>
+                {/* <img src={} alt="" /> //должно пропадать когда выполнены условия */}
+                <div className={style.headerBtn}>
+                    <button className={style.btnPublish}>
+                        ОПУБЛИКОВАТЬ
+                    </button>
+                    <button className={style.btnDraft}>
+                        ЧЕРНОВИК
+                    </button>
+                </div>
             </header>
 
             {/* ======= Block 1 ======= */}
@@ -50,7 +56,7 @@ export const Editor = () => {
                             <button className={style.reloadBtn}>
                                 <img src="" alt="" />
                             </button>
-                            <button>
+                            <button className={style.btnDownload}>
                                 Загрузить
                             </button>
                         </div>
