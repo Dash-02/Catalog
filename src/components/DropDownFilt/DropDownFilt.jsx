@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import icoReload from '../../assets/icons/reload.svg'
 import style from './DropDownFilt.module.scss'
-import icoReload from '../../assets/icons/reload.svg';
 
 const DropDown = ({ default_arg, args }) => {
 	const [clicked, setClicked] = useState(false)
@@ -44,10 +44,10 @@ const DropDown = ({ default_arg, args }) => {
 	}
 
 	const handleReload = () => {
-        setSelectedElement('');
-        setSelectedElementIndex(null);
-        setClicked(false);
-    };
+		setSelectedElement('')
+		setSelectedElementIndex(null)
+		setClicked(false)
+	}
 
 	return (
 		<div className={style.wrapperRootDropDown}>
@@ -77,15 +77,15 @@ const DropDown = ({ default_arg, args }) => {
 									color: selectedElementIndex === index ? '#fff' : '#99a8b2',
 								}}
 							>
-							{element}
+								{element}
 							</li>
 						))}
 					</ul>
 				)}
 			</div>
 			<button className={style.reload_btn} onClick={handleReload}>
-				<img src={icoReload} alt="" />
-            </button>
+				<img src={icoReload} alt='iconReload' className={style.imgIcon} />
+			</button>
 		</div>
 	)
 }
