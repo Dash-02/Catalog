@@ -2,8 +2,18 @@
     display: flex;
     flex-direction: column;
 
-    border-bottom: 1px solid var(--color-price-type);
+    height: 415px;
+    width: auto;
+
     color: var(--color-light-gray);
+    font-size: 12px;
+    font-weight: 500; // medium = 500
+    
+    border-radius: var(--md-raduis);
+    box-shadow: var(--shadow-style);
+
+    padding-left: 58px;
+    padding-right: 30px;
 }
 
 .headerEditor {
@@ -12,12 +22,19 @@
     display: flex;
     justify-content: space-between;
 
+    border-bottom: 1px solid var(--color-price-type);
+
     span {
-        font-style: 24px;
+        font-size: 24px;
         font-weight: bold;
         color: var(--color-black);
-        margin: 0;
+        margin-bottom: 0;
+       
     }
+}
+
+.editorContent {
+    border-bottom: 1px solid var(--color-price-type);
 }
 
 .logoEditor {
@@ -28,6 +45,8 @@
     img {
         width: 39px;
         height: 39px;
+
+        margin: 15px;
     }
 }
 
@@ -46,7 +65,9 @@
 
 .btnPublish {
     background-color: var(--color-dark-green);
-    font-weight: bold;
+    font-weight: 900; // black = 900
+    font-family: inherit;
+    margin-right: 20px;
 }
 
 .btnDraft {
@@ -56,20 +77,44 @@
 }
 
 .btnDownload {
-    width: 204px;
-    height: 28px;
+    width: 170px;
+    height: 23px;
     
     background: none;
     
-    border-radius: 7px;
+    border-radius: var(--l-raduis);
     border: 1px solid var(--color-light-gray);
-    
-    font-size: 12px;
+    box-shadow: var(--shadow-light);
+
+    font-size: 10px;
     font-family: inherit;
     color: inherit;
     
-    text-align: center;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
+}
+
+.description {
+    width: 170px;
+    height: 53px;
+    border-radius: var(--l-raduis);
+    border: 1px solid var(--color-light-gray);
+    color: inherit;
+    font-size: 12px;
+    resize: none;
+    box-shadow: var(--shadow-light);
+}
+
+.paramsHeader {
+    font-size: 16px;
+    margin: 10px 0px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin-bottom: 20px;
 }

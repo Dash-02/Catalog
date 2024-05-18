@@ -46,7 +46,7 @@ export const Editor = () => {
             {/* ======= Block 1 ======= */}
             <div className={style.editorContent}>
                 <div className={style.paramsChannel}>
-                    <span>
+                    <span className={style.paramsHeader}>
                         Параметры канала
                     </span>
                     <div className={style.paramsContent}>
@@ -76,7 +76,7 @@ export const Editor = () => {
                             <button className={style.reloadBtn}>
                                 <img src="" alt="" />
                             </button>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <textarea className={style.description} name="" id="" cols="5" rows="5"></textarea>
                         </div>
                         
                         {/* ======= Block 2 ======= */}
