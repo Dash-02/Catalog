@@ -42,9 +42,10 @@ export const Editor = () => {
                     </button>
                 </div>
             </header>
-
-            {/* ======= Block 1 ======= */}
+            
             <div className={style.editorContent}>
+                 
+                {/* ======= Block 1 paramsChannel ======= */}
                 <div className={style.paramsChannel}>
                     <span className={style.paramsHeader}>
                         Параметры канала
@@ -78,11 +79,36 @@ export const Editor = () => {
                             </button>
                             <textarea className={style.description} name="" id="" cols="5" rows="5"></textarea>
                         </div>
-                        
-                        {/* ======= Block 2 ======= */}
 
                     </div>
                 </div>
+
+                {/* ======= Block 2 costAdvertising ======= */}
+                <div className={style.costAdvertising}>
+                    <span className={style.paramsHeader}>
+                        Стоимость рекламы на обычных условиях
+                    </span>
+                    <div className={style.advertisingContent}>
+                        <div className={style.item}>
+                            <span>1</span>
+                            <div className={style.advertisingItem}>
+                                <label htmlFor="costAdver">
+                                    <input 
+                                        type="text" 
+                                        id='costAdver'
+                                    />
+                                </label>
+                                <span>
+                                    1/24
+                                </span>
+                                <button className={style.costBtn}>
+                                    СОХРАНИТЬ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </>
