@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import icoReload from '../../assets/icons/reload.svg'
-import style from './DropDownFilt.module.scss'
+import style from './DropDownEditor.module.scss'
 
 const DropDown = ({ default_arg, args }) => {
 	const [clicked, setClicked] = useState(false)
@@ -51,6 +51,9 @@ const DropDown = ({ default_arg, args }) => {
 
 	return (
 		<div className={style.wrapperRootDropDown}>
+			<button className={style.reload_btn} onClick={handleReload}>
+				<img src={icoReload} alt='iconReload' className={style.imgIcon} />
+			</button>
 			<div ref={catMenu} className={style.wrapperDropDown}>
 				<button className={style.btnSort} onClick={handleClickedHidden}>
 					{!clicked ? default_arg : selectedElement}
@@ -83,9 +86,6 @@ const DropDown = ({ default_arg, args }) => {
 					</ul>
 				)}
 			</div>
-			<button className={style.reload_btn} onClick={handleReload}>
-				<img src={icoReload} alt='iconReload' className={style.imgIcon} />
-			</button>
 		</div>
 	)
 }

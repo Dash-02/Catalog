@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import DropDowmFilt from '../DropDownFilt/DropDownFilt.jsx';
+import DropDowmEditor from '../DropDownEditor/DropDownEditor.jsx';
 import style from './Editor.module.scss';
 
 import iconAdvix from '../../assets/img/advix_photo.png';
@@ -63,12 +63,12 @@ export const Editor = () => {
 
                         <div className={style.item}>
                             <span>Категория</span>
-                            <DropDowmFilt default_arg={default_argCategory} args={categoryList}/>
+                            <DropDowmEditor default_arg={default_argCategory} args={categoryList}/>
                         </div>
 
                         <div className={style.item}>
                             <span>Язык</span>
-                            <DropDowmFilt default_arg={default_argLang} args={langList}/>
+                            <DropDowmEditor default_arg={default_argLang} args={langList}/>
                         </div>
 
                         <div className={style.item}>

@@ -11,8 +11,8 @@
 	position: relative;
 
 	button {
-		width: 12.75rem;
-		height: 1.75rem;
+		width: 10.625rem;
+		height: 1.4375rem;
 
 		background: none;
 
@@ -24,30 +24,31 @@
 		color: inherit;
 
 		padding: 0.3125rem 0.9375rem 0.3125rem 3.125rem;
+		margin-left: 30px;
 	}
 
 	ul {
 		list-style-type: none;
 		padding: 0;
-		background-color: var(--color-white-background);
+		background-color: var(--color-white);
 		text-align: center;
-		border-radius: 0.4375rem;
-		border: 0.0625rem solid var(--color-light-gray);
+		border-radius: .4375rem;
+		border: .0625rem solid var(--color-light-gray);
 		overflow: hidden;
 		box-shadow: var(--shadow);
 		position: absolute;
 		z-index: 100;
-		top: 2.1875rem;
+		top: 1.875rem;
 
 		li {
-			width: 12.75rem;
-			font-size: 0.875rem;
+			width: 10.625rem;
+			font-size: .75rem;
 			font-weight: 500;
 
-			padding-top: 0.3125rem;
-			padding-bottom: 0.3125rem;
+			padding-top: .3125rem;
+			padding-bottom: .3125rem;
 			font-family: 'Roboto', sans-serif;
-			border-bottom: 0.0625rem solid var(--color-bottom-list);
+			border-bottom: .0625rem solid var(--color-bottom-list);
 			&:last-of-type {
 				border-bottom: none;
 			}
@@ -100,6 +101,6 @@
 	}
 }
 .imgIcon {
-	width: 0.75rem;
-	height: 0.75rem;
+	width: .625rem;
+	height: .625rem;
 }
