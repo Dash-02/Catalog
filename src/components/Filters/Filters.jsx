@@ -8,7 +8,7 @@ import icoLock from '../../assets/icons/lock_open.svg';
 import icoVerify from '../../assets/icons/check_verify.svg';
 import icoHeartStroke from '../../assets/icons/favorite.svg';
 import icoSave from '../../assets/icons/save.svg';
-import {data} from '../FakeData/FakeData.js';
+import {element} from '../FakeData/FakeData.js';
 
 import DropDown from '../DropDownFilt/DropDownFilt.jsx';
 
@@ -52,15 +52,15 @@ function Filter() {
     const updateRange = (key) => {
         let values;
         if (key === 'price') {
-            values = data.map(item => item.default_price);
+            values = element.map(item => item.default_price);
         } else if (key === 'cpm') {
-            values = data.map(item => item.CPM);
+            values = element.map(item => item.CPM);
         } else if (key === 'subscribers') {
-            values = data.map(item => item.count_subscribers);
+            values = element.map(item => item.count_subscribers);
         } else if (key === 'views') {
-            values = data.map(item => item.count_views);
+            values = element.map(item => item.count_views);
         } else if (key === 'err') {
-            values = data.map(item => item.ERR);
+            values = element.map(item => item.ERR);
         }
         const min = Math.min(...values);
         const max = Math.max(...values);

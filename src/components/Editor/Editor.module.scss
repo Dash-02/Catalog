@@ -16,6 +16,7 @@
     padding-right: 30px;
     
     .paramsHeader {
+        display: block;
         font-size: 16px;
         margin: 30px 0px;
     }
@@ -64,6 +65,8 @@
     }
 }
 
+// ===== BUTTONS ====== //
+
 .headerBtn {
     display: flex;
     justify-content: space-between;
@@ -103,6 +106,10 @@
     color: var(--color-white);
 }
 
+button:active {
+    filter: brightness(0.9);
+}
+
 .btnDownload {
     width: 10.625rem;
     height: 1.4375rem;
@@ -121,6 +128,8 @@
     align-items: center;
     justify-content: center;
 }
+
+// ============ //
 
 .description {
     width: 10.625rem;
@@ -141,7 +150,7 @@
     margin-bottom: 20px;
 }
 
-// ======= Block 2 costAdvertising =======
+// ======= Block 2 costAdvertising ======= //
 
 .advertisingItem {
     width: 332px;
@@ -152,8 +161,12 @@
     box-shadow: var(--shadow-light);
 }
 
-.costBtn {
+.btnCost {
     background-color: var(--color-light-gray);
     font-size: 12px;
     font-weight: 900;
+}
+
+.btnSale {
+    font-size: 12px;
 }

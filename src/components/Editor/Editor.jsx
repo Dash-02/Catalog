@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import DropDowmEditor from '../DropDownEditor/DropDownEditor.jsx';
+import { sortedPriceObjects } from '../Sorting/Sorting'
 import style from './Editor.module.scss';
 
+import {element} from '../FakeData/FakeData.js';
 import iconAdvix from '../../assets/img/advix_photo.png';
 
 export const Editor = () => {
@@ -23,6 +25,34 @@ export const Editor = () => {
         'Арабский'
     ];
     const default_argLang = 'Не выбрано';
+
+    // sale in block 2
+    const [clicked, setClicked] = useState(false)
+    const [indexY, setIndexY] = useState(0)
+    const [clickedTypePrice, setClickedTypePrice] = useState({
+        24: false,
+        48: false,
+        72: false,
+        0: false,
+        1: false,
+        2: false,
+    })
+    
+    const handleClickedTypePrice = (key, index) => {
+        setClickedTypePrice(prevState => {
+            setIndexY(index)
+            let newState = {
+                24: false,
+                48: false,
+                72: false,
+                0: false,
+                1: false,
+                2: false,
+            }
+            newState[key] = true
+            return newState
+        })
+    }
 
   return (
     <>
@@ -83,7 +113,7 @@ export const Editor = () => {
                     </div>
                 </div>
 
-                {/* ======= Block 2 costAdvertising ======= */}
+                {/* ======= element 1 Block 2 costAdvertising ======= */}
                 <div className={style.costAdvertising}>
                     <span className={style.paramsHeader}>
                         Стоимость рекламы на обычных условиях
@@ -96,17 +126,108 @@ export const Editor = () => {
                                     <input 
                                         type="text" 
                                         id='costAdver'
+                                        placeholder='Введите стоимость'
                                     />
                                 </label>
-                                <span>
+                                <button className={style.btnSale}>
                                     1/24
-                                </span>
-                                <button className={style.costBtn}>
+                                </button>
+                                <button className={style.btnCost}>
                                     СОХРАНИТЬ
                                 </button>
                             </div>
                         </div>
                     </div>
+                
+                
+                {/* ====== element 2 block 2 ====== */}
+                <div className={style.advertisingContent}>
+                    <div className={style.item}>
+                        <span>2</span>
+                        <div className={style.advertisingItem}>
+                            <label htmlFor="costAdver">
+                                <input 
+                                    type="text" 
+                                    id='costAdver'
+                                    placeholder='Введите стоимость'
+                                />
+                            </label>
+                                
+                            <div className={style.priceType}>
+				                {sortedPriceObjects(element[0].priceObjects).map(
+					                (time, index) =>
+						                time.hot === false && (
+							                <button
+								                key={index}
+								                className={
+									            clickedTypePrice[time.time]
+										            ? style.clickedBtn
+										            : style.nonClickedButton
+								                }
+								                onClick={() => handleClickedTypePrice(time.time, index)}
+							                >
+								                {time.time === 24 && '1/24'}
+								                {time.time === 48 && '1/48'}
+								                {time.time === 72 && '1/72'}
+								                {time.time === 0 && 'натив'}
+								                {time.time === 1 && 'репост'}
+								                {time.time === 2 && 'б/уд'}
+								                {time.hot_date}
+							                </button>
+						                )
+				                )}
+			                </div>
+                            <button className={style.btnCost}>
+                                СОХРАНИТЬ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+
+            {/* ====== element 3 block 2 ====== */}
+            <div className={style.advertisingContent}>
+                    <div className={style.item}>
+                        <span>3</span>
+                        <div className={style.advertisingItem}>
+                            <label htmlFor="costAdver">
+                                <input 
+                                    type="text" 
+                                    id='costAdver'
+                                    placeholder='Введите стоимость'
+                                />
+                            </label>
+                                
+                            <div className={style.priceType}>
+				                {sortedPriceObjects(element[0].priceObjects).map(
+					                (time, index) =>
+						                time.hot === false && (
+							                <button
+								                key={index}
+								                className={
+									            clickedTypePrice[time.time]
+										            ? style.clickedBtn
+										            : style.nonClickedButton
+								                }
+								                onClick={() => handleClickedTypePrice(time.time, index)}
+							                >
+								                {time.time === 24 && '1/24'}
+								                {time.time === 48 && '1/48'}
+								                {time.time === 72 && '1/72'}
+								                {time.time === 0 && 'натив'}
+								                {time.time === 1 && 'репост'}
+								                {time.time === 2 && 'б/уд'}
+								                {time.hot_date}
+							                </button>
+						                )
+				                )}
+			                </div>
+                            <button className={style.btnCost}>
+                                СОХРАНИТЬ
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 </div>
 
             </div>
