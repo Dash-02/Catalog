@@ -124,7 +124,7 @@ export const Editor = () => {
                             <div className={style.advertisingItem}>
                                 <label htmlFor="costAdver">
                                     <input 
-                                        type="text" 
+                                        type="number" 
                                         id='costAdver'
                                         className={style.inputCost}
                                         placeholder='Введите стоимость'
@@ -148,7 +148,7 @@ export const Editor = () => {
                         <div className={style.advertisingItem}>
                             <label htmlFor="costAdver">
                                 <input 
-                                    type="text" 
+                                    type="number" 
                                     id='costAdver'
                                     className={style.inputCost}
                                     placeholder='Введите стоимость'
@@ -184,8 +184,7 @@ export const Editor = () => {
                             </button>
                         </div>
                     </div>
-                </div>
-                
+                </div>                
 
             {/* ====== element 3 block 2 ====== */}
             <div className={style.advertisingContent}>
@@ -194,7 +193,7 @@ export const Editor = () => {
                         <div className={style.advertisingItem}>
                             <label htmlFor="costAdver">
                                 <input 
-                                    type="text" 
+                                    type="number" 
                                     id='costAdver'
                                     className={style.inputCost}
                                     placeholder='Введите стоимость'
