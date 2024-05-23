@@ -45,7 +45,7 @@
     border-bottom: 1px solid var(--color-price-type);
     display: flex;
     flex-direction: row;
-    // justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .paramsChannel {
@@ -150,9 +150,31 @@ button:active {
     margin-bottom: 20px;
 }
 
+.itemAdv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-price-type);
+}
+.itemAdv:nth-last-child(3) {
+    border: none;
+}
+// .costAdvertising {
+//     .itemAdv:nth-of-type(2) {
+        
+//         border-top: 1px solid var(--color-price-type);
+//     }
+// }
+
 // ======= Block 2 costAdvertising ======= //
 
 .advertisingItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     width: 332px;
     height: 35px;
 
@@ -165,8 +187,37 @@ button:active {
     background-color: var(--color-light-gray);
     font-size: 12px;
     font-weight: 900;
+    // width: 111px;
+    width: 6.9375rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .3rem;
 }
 
 .btnSale {
     font-size: 12px;
+    width: 4.375rem;
+    border-left: 1px solid var(--color-light-gray);
+    border-right: 1px solid var(--color-light-gray);
+    height: 2.1875rem;
+}
+
+.inputCost {
+    font-size: .75rem;
+    margin-left: .75rem;
+}
+
+.priceType {
+    width: 4.375rem;
+    border-left: 1px solid var(--color-light-gray);
+    border-right: 1px solid var(--color-light-gray);
+    height: 2.1875rem;
+}
+
+.number {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 1.0625rem;
 }

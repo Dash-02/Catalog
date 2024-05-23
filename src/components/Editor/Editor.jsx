@@ -119,13 +119,14 @@ export const Editor = () => {
                         Стоимость рекламы на обычных условиях
                     </span>
                     <div className={style.advertisingContent}>
-                        <div className={style.item}>
-                            <span>1</span>
+                        <div className={style.itemAdv}>
+                            <span className={style.number}>1</span>
                             <div className={style.advertisingItem}>
                                 <label htmlFor="costAdver">
                                     <input 
                                         type="text" 
                                         id='costAdver'
+                                        className={style.inputCost}
                                         placeholder='Введите стоимость'
                                     />
                                 </label>
@@ -142,13 +143,14 @@ export const Editor = () => {
                 
                 {/* ====== element 2 block 2 ====== */}
                 <div className={style.advertisingContent}>
-                    <div className={style.item}>
-                        <span>2</span>
+                    <div className={style.itemAdv}>
+                        <span className={style.number}>2</span>
                         <div className={style.advertisingItem}>
                             <label htmlFor="costAdver">
                                 <input 
                                     type="text" 
                                     id='costAdver'
+                                    className={style.inputCost}
                                     placeholder='Введите стоимость'
                                 />
                             </label>
@@ -187,13 +189,14 @@ export const Editor = () => {
 
             {/* ====== element 3 block 2 ====== */}
             <div className={style.advertisingContent}>
-                    <div className={style.item}>
-                        <span>3</span>
+                    <div className={style.itemAdv}>
+                        <span className={style.number}>3</span>
                         <div className={style.advertisingItem}>
                             <label htmlFor="costAdver">
                                 <input 
                                     type="text" 
                                     id='costAdver'
+                                    className={style.inputCost}
                                     placeholder='Введите стоимость'
                                 />
                             </label>
