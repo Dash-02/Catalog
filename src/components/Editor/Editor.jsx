@@ -8,6 +8,15 @@ import iconAdvix from '../../assets/img/advix_photo.png';
 
 export const Editor = () => {
 
+    // let price = element[0].priceObjects[0].price
+    // let count_subscribers = element[0].count_subscribers
+    // let count_views = element[0].count_views
+    // let posts_count = element[0].posts_count
+    
+    // let aver_views_post = count_views / posts_count
+    // let cpm = (price / aver_views_post) * 1000
+    // let err = (aver_views_post / count_subscribers) * 100 // в процентах %
+
     const categoryList = [
         'Telegram', 
         'Новости и СМИ', 
@@ -231,7 +240,11 @@ export const Editor = () => {
                     </div>
                 </div>
                 </div>
-
+                {/* {console.log('aver_views, cpm, err:', aver_views_post, cpm, err)}
+                {console.log('subscribers:', count_subscribers)}
+                {console.log('views:', count_views)}
+                {console.log('price:', price)}
+                {console.log('posts_count:', posts_count)} */}
             </div>
         </div>
     </>

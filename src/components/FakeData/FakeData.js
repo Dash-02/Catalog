@@ -11,7 +11,7 @@ export const element = [
 		language: 'русский',
 		id_telegram: -45456567,
 		desc_channel:
-			'Отличный канал! Условия в ЛС! Постоянно на закупах!  Не рекламируем: ставки. К постам кнопки не добавляем! Моментальное подтверждение!',
+			'Отличный канал! Условия в ЛС! Пну ростоянно на закупах!  Не рекламируем: ставки. К постам кнопки не добавляем! Моментальное подтверждение!',
 		link_Cannel: 'HtmlGram1',
 		link_Type_Boolean: true,
 		name_channel: 'Test: новости',
@@ -23,6 +23,7 @@ export const element = [
 		ERR: 0.25,
 		selected: 200,
 		position: 2,
+		posts_count: 12,
 
 		priceObjects: [
 			{
