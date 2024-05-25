@@ -27,7 +27,11 @@
 }
 
 .costAdvertising:nth-of-type(2) .paramsHeader {
-    margin-right: 20px;
+    margin-left: 30px;
+}
+
+.salesBlock .paramsHeader {
+    color: var(--color-dark-yellow);
 }
 
 .headerEditor {
@@ -133,6 +137,29 @@ button:active {
     justify-content: center;
 }
 
+.reloadBtn {
+	background: none;
+
+	display: flex;
+	align-items: center;
+
+	margin-left: 0.3125rem;
+}
+
+.reloadBtn:active img {
+	animation: rotate 0.25s linear;
+}
+
+@keyframes rotate {
+	to {
+		transform: rotate(-360deg);
+	}
+}
+.imgIcon {
+	width: .625rem;
+	height: .625rem;
+}
+
 // ============ //
 
 .description {
@@ -221,4 +248,24 @@ button:active {
     font-size: 16px;
     font-weight: bold;
     margin-right: 1.0625rem;
+}
+
+// ======= DropDown block2 ========= //
+
+.dropDownWrapper {
+    select {
+        display: flex;
+        align-items: flex-start;
+	    align-items: center;
+    }
+}
+
+// ======= Sales Block 3 ======= //
+
+.salesBlock {
+    
+}
+
+.salesContent {
+
 }
