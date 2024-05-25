@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import DateInput from '../DateInput/DateInput.jsx';
+
 import DropDowmEditor from "../DropDownEditor/DropDownEditor.jsx";
 import { sortedPriceObjects } from "../Sorting/Sorting";
-import DropDownSale from "../DropDownSale/DropDownSale.jsx";
 import style from "./Editor.module.scss";
 
 import { element } from "../FakeData/FakeData.js";
@@ -9,17 +12,18 @@ import iconAdvix from "../../assets/img/advix_photo.png";
 import icoReload from "../../assets/icons/reload.svg";
 import iconExclamation from "../../assets/icons/exclamation.svg"
 
-export const Editor = () => {
+export const Editor = ({ value, onClick, onChange }) => {
   // let price = element[0].priceObjects[0].price
   // let count_subscribers = element[0].count_subscribers
-  // let count_views = element[0].count_views
+  // let views = element[0].views
   // let posts_count = element[0].posts_count
 
-  // let aver_views_post = count_views / posts_count
+  // let aver_views_post = views / posts_count
   // let cpm = (price / aver_views_post) * 1000
   // let err = (aver_views_post / count_subscribers) * 100 // в процентах %
 
   const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
 
   const handleReload = () => {
     setDescription("");
@@ -172,6 +176,7 @@ export const Editor = () => {
                   className={style.description}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  maxLength={255}
                   cols="5"
                   rows="5"
                 ></textarea>
@@ -302,7 +307,33 @@ export const Editor = () => {
               Создать горящее предложение &#128293;
             </span>
             <div className={style.salesContent}>
-              <div className={style.item}></div>
+              <div className={style.itemSale}>
+                <label htmlFor="costAdver">
+                  <input
+                    type="number"
+                    id="costAdver"
+                    className={style.inputCost}
+                    placeholder="Введите стоимость"
+                  />
+                </label>
+
+                <div className={style.saleElement}>
+                  20% скидка
+                </div>
+                <div className={style.saleElement}>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    dateFormat="dd.MM.yyyy"
+                    className={style.datePicker}
+                    customInput={<DateInput className={style.dateInput}/>}
+                  />
+                </div>
+                <div className={style.saleElement}>
+                  00:00
+                </div>
+                <button className={style.btnStart}>ЗАПУСТИТЬ</button>
+              </div>
             </div>
           </div>
         </div>

@@ -214,13 +214,13 @@ button:active {
     background-color: var(--color-light-gray);
     font-size: 12px;
     font-weight: 900;
-    // width: 111px;
+
     width: 6.9375rem;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    // border-radius: 0rem .3rem .3rem 0rem;
 }
 
 .btnSale {
@@ -234,7 +234,10 @@ button:active {
 .inputCost {
     font-size: .75rem;
     margin-left: .75rem;
+    margin-right: .0725rem;
     font-size: 12px;
+
+    width: 135px;
 }
 
 .priceType {
@@ -267,5 +270,61 @@ button:active {
 }
 
 .salesContent {
+    
+}
+
+.itemSale {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 493px;
+    height: 35px;
+
+    border-radius: .4375rem;
+    border: 1px solid var(--color-dark-yellow);
+    box-shadow: var(--shadow-light);
+
+    overflow: hidden; 
+}
+
+.btnStart {
+    background-color: var(--color-dark-yellow);
+    font-size: 12px;
+    font-weight: 900;
+
+    width: 6.9375rem;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnStart:active {
+    background-color: var(--color-click-yellow);
+    filter: brightness(1);
+}
+
+.saleElement {
+    border-left: 1px solid var(--color-dark-yellow);
+    height: 100%;
+    width: 77px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.itemSale .saleElement:nth-of-type(1) {
+    color: var(--color-lighter-green);
+    font-weight: bold;
+    font-size: 10px;
+
+    padding: 8px;
+}
+
+.datePicker {
 
 }
