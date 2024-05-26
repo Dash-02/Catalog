@@ -115,7 +115,7 @@
 }
 
 button:active {
-    filter: brightness(0.9);
+    filter: brightness(1.17);
 }
 
 .btnDownload {
@@ -158,6 +158,14 @@ button:active {
 .imgIcon {
 	width: .625rem;
 	height: .625rem;
+}
+
+// ====== image ====== //
+
+.previewCover {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: .1875rem;
 }
 
 // ============ //
@@ -222,6 +230,10 @@ button:active {
     align-items: center;
     justify-content: center;
 }
+
+// .btnCost:active {
+//     background-color: var(--color-lighter-gray);
+// }
 
 .btnSale {
     font-size: 12px;
@@ -302,7 +314,7 @@ button:active {
 }
 
 .btnStart:active {
-    background-color: var(--color-click-yellow);
+    background-color: var(--color-light-yellow);
     filter: brightness(1);
 }
 

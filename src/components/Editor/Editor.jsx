@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './datepickerStyles.css';
@@ -13,7 +13,7 @@ import iconAdvix from "../../assets/img/advix_photo.png";
 import icoReload from "../../assets/icons/reload.svg";
 import iconExclamation from "../../assets/icons/exclamation.svg"
 
-export const Editor = ({ value, onClick, onChange }) => {
+export const Editor = () => {
   // let price = element[0].priceObjects[0].price
   // let count_subscribers = element[0].count_subscribers
   // let views = element[0].views
@@ -23,13 +23,63 @@ export const Editor = ({ value, onClick, onChange }) => {
   // let cpm = (price / aver_views_post) * 1000
   // let err = (aver_views_post / count_subscribers) * 100 // в процентах %
 
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  // block-1, button adding picture
+  const fileInputRef = useRef(null);
+  const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState('');
 
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+    if (files.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFileName(shortenFileName(file.name));
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleReloadPicture = () => {
+    setImage(null);
+    setFileName('');
+    fileInputRef.current.value = '';
+  };
+
+  // function for block-1 adding picture name
+  const shortenFileName = (name) => {
+    const maxLength = 20;
+    if (name.length <= maxLength) {
+      return name;
+    }
+    const start = name.slice(0, 10);
+    const end = name.slice(-10);
+    return `${start}...${end}`;
+  };
+
+  // block-1, input with discription
+  const [description, setDescription] = useState("");
+  
   const handleReload = () => {
     setDescription("");
   };
 
+  // block-2, input with cost adverts
+  const [costAdverts, setCostAdverts] = useState('');
+
+  const handleCostAdvertsChange = (event) => {
+    setCostAdverts(event.target.value);
+  }
+
+  // choose date in calendar, block-3
+  const [startDate, setStartDate] = useState(new Date());
+
+  // block-1
   const categoryList = [
     "Telegram",
     "Новости и СМИ",
@@ -122,9 +172,10 @@ export const Editor = ({ value, onClick, onChange }) => {
   return (
     <>
       <div className={style.editor}>
+        {/* ======= Header ======= */}
         <header className={style.headerEditor}>
           <div className={style.logoEditor}>
-            <img src={iconAdvix} alt="" />
+            <img src={iconAdvix} alt="iconAdvix" />
             <span>Advix: новости</span>
           </div>
           {/* <img src={iconExclamation} alt="!" /> //должно пропадать когда выполнены условия */}
@@ -141,14 +192,29 @@ export const Editor = ({ value, onClick, onChange }) => {
             <div className={style.paramsContent}>
               <div className={style.item}>
                 <span>Обложка</span>
-                <button className={style.reloadBtn} onClick={handleReload}>
+                <button className={style.reloadBtn} onClick={handleReloadPicture}>
                   <img
                     src={icoReload}
                     alt="iconReload"
                     className={style.imgIcon}
                   />
                 </button>
-                <button className={style.btnDownload}>Загрузить</button>
+                <button className={style.btnDownload} onClick={handleButtonClick}>
+                  {!image ? 'Загрузить': fileName}
+                  {image && <img src={image} alt="cover" className={style.previewCover} />}
+                </button>
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                />
+                {/* {image && (
+                  <a href={image} target="_blank" rel="noopener noreferrer">
+                    <img src={image} alt="cover" className={style.preview} />
+                  </a>
+                )} */}
               </div>
 
               <div className={style.item}>
@@ -200,6 +266,8 @@ export const Editor = ({ value, onClick, onChange }) => {
                       id="costAdver"
                       className={style.inputCost}
                       placeholder="Введите стоимость"
+                      value={costAdverts}
+                      onChange={handleCostAdvertsChange}
                     />
                   </label>
                   <button className={style.btnSale}>1/24</button>
@@ -219,6 +287,8 @@ export const Editor = ({ value, onClick, onChange }) => {
                       id="costAdver"
                       className={style.inputCost}
                       placeholder="Введите стоимость"
+                      value={costAdverts}
+                      onChange={handleCostAdvertsChange}
                     />
                   </label>
 
@@ -242,6 +312,8 @@ export const Editor = ({ value, onClick, onChange }) => {
                       id="costAdver"
                       className={style.inputCost}
                       placeholder="Введите стоимость"
+                      value={costAdverts}
+                      onChange={handleCostAdvertsChange}
                     />
                   </label>
 
@@ -295,12 +367,6 @@ export const Editor = ({ value, onClick, onChange }) => {
                 </div>
               </div>
             </div>
-
-            {/* {console.log('aver_views, cpm, err:', aver_views_post, cpm, err)}
-            {console.log('subscribers:', count_subscribers)}
-            {console.log('views:', count_views)}
-            {console.log('price:', price)}
-            {console.log('posts_count:', posts_count)} */}
           </div>
           {/* ====== element 1 block 3 ====== */}
           <div className={style.salesBlock}>
@@ -315,6 +381,8 @@ export const Editor = ({ value, onClick, onChange }) => {
                     id="costAdver"
                     className={style.inputCost}
                     placeholder="Введите стоимость"
+                    value={costAdverts}
+                    onChange={handleCostAdvertsChange}
                   />
                 </label>
 
