@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import './datepickerStyles.css';
 import DateInput from '../DateInput/DateInput.jsx';
 
 import DropDowmEditor from "../DropDownEditor/DropDownEditor.jsx";

@@ -1,0 +1,54 @@
+/* Основные стили для календаря */
+.react-datepicker {
+  box-shadow: var(--shadow-style);
+  font-size: 12px;
+}
+
+.react-datepicker__day--selected:hover {
+  background-color: var(--color-dark-green2);
+}
+
+  /* Стили для ховера на дне */
+.react-datepicker__day--keyboard-selected:hover {
+  background-color: var(--color-dark-green);
+}
+
+  /* Стили для заголовка месяца */
+.react-datepicker__current-month {
+  font-size: 14px;
+  color: var(--color-dark-gray);
+}
+  
+  /* Стили для навигационных кнопок */
+.react-datepicker__navigation {
+  width: 24px;
+  height: 24px;
+}
+
+.react-datepicker__day-name {
+  width: 24px;
+  height: 24px;
+  color: var(--color-dark-gray);
+}
+
+.react-datepicker__day {
+  width: 24px;
+  height: 24px;
+  line-height: 1.25rem;
+  color: var(--color-light-gray);
+}
+
+.react-datepicker__month-container {
+  color: var(--color-light-gray);
+}
+
+/* Стили для выбранной даты */
+.react-datepicker__day--selected {
+  background-color: var(--color-dark-green);
+  color: var(--color-white);
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--color-light-green);
+  color: var(--color-white);
+}
