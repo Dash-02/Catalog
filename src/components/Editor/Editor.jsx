@@ -79,6 +79,12 @@ export const Editor = () => {
   // choose date in calendar, block-3
   const [startDate, setStartDate] = useState(new Date());
 
+  // button Remove card
+  const [channel, setChannel] = useState('');
+  const handleRemoveChannel = () => {
+    setChannel();
+  }
+
   // block-1
   const categoryList = [
     "Telegram",
@@ -404,8 +410,16 @@ export const Editor = () => {
                 <button className={style.btnStart}>ЗАПУСТИТЬ</button>
               </div>
             </div>
+            <div className={style.horizontalLine}></div>
           </div>
         </div>
+
+        <div className={style.wrapperBtnDelete}>
+          <button className={style.btnDelete} onClick={handleReloadPicture}>
+            УДАЛИТЬ
+          </button>
+        </div>
+        
       </div>
     </>
   );

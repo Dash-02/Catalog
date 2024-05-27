@@ -2,23 +2,23 @@
     display: flex;
     flex-direction: column;
 
-    height: 415px;
+    height: 25.9375rem;
     width: auto;
 
     color: var(--color-light-gray);
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 500; // medium = 500
     
     border-radius: var(--md-raduis);
     box-shadow: var(--shadow-style);
 
-    padding-left: 58px;
-    padding-right: 30px;
+    padding-left: 3.625rem;
+    padding-right: 1.875rem;
     
     .paramsHeader {
         display: block;
-        font-size: 16px;
-        margin: 30px 0px;
+        font-size: 1rem;
+        margin: 1.875rem 0rem;
     }
 
     span {
@@ -26,8 +26,13 @@
     }
 }
 
+.wrapperBtnDelete {
+    display: flex;
+    justify-content: end;
+}
+
 .costAdvertising:nth-of-type(2) .paramsHeader {
-    margin-left: 30px;
+    margin-left: 1.875rem;
 }
 
 .salesBlock .paramsHeader {
@@ -43,17 +48,18 @@
     border-bottom: 1px solid var(--color-price-type);
 
     span {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: bold;
         color: var(--color-black);
     }
 }
 
 .editorContent {
-    border-bottom: 1px solid var(--color-price-type);
+    border-bottom: .0625rem solid var(--color-price-type);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    height: 16.8125rem;
 }
 
 .paramsChannel {
@@ -66,10 +72,10 @@
     align-items: center;
 
     img {
-        width: 39px;
-        height: 39px;
+        width: 2.4375rem;
+        height: 2.4375rem;
 
-        margin: 15px;
+        margin: .9375rem;
     }
 }
 
@@ -81,10 +87,10 @@
     align-items: center;
 
     button {
-        width: 130px;
-        height: 35px;
+        width: 8.125rem;
+        height: 2.1875rem;
         border-radius: var(--l-raduis);
-        font-size: 12px;
+        font-size: .75rem;
     }
 }
 
@@ -92,7 +98,7 @@
     background-color: var(--color-dark-green);
     font-weight: 900; // black = 900
     font-family: inherit;
-    margin-right: 20px;
+    margin-right: 1.25rem;
     
     transition: background-color 0.4s ease;
 }
@@ -102,7 +108,7 @@
 }
 
 .btnDraft {
-    border: 1px solid var(--color-red);
+    border: .0625rem solid var(--color-red);
     background-color: var(--color-white);
     color: var(--color-red);
 
@@ -118,6 +124,24 @@ button:active {
     filter: brightness(1.17);
 }
 
+.btnDelete {
+    width: 6.9375rem;
+    height: 2.1875rem;
+
+    background-color: var(--color-red);
+    border-radius: var(--l-raduis);
+
+    font-size: .75rem;
+    font-family: inherit;
+    font-weight: 900;
+
+    margin: 1.25rem 0rem;
+}
+
+.btnDelete:active {
+    background-color: var(--color-light-red);
+}
+
 .btnDownload {
     width: 10.625rem;
     height: 1.4375rem;
@@ -125,10 +149,10 @@ button:active {
     background: none;
     
     border-radius: var(--l-raduis);
-    border: 1px solid var(--color-light-gray);
+    border: .0625rem solid var(--color-light-gray);
     box-shadow: var(--shadow-light);
 
-    font-size: 10px;
+    font-size: .625rem;
     font-family: inherit;
     color: inherit;
     
@@ -163,8 +187,8 @@ button:active {
 // ====== image ====== //
 
 .previewCover {
-    width: 1.25rem;
-    height: 1.25rem;
+    // width: 1.1rem;
+    height: 1.1rem;
     margin-left: .1875rem;
 }
 
@@ -174,9 +198,9 @@ button:active {
     width: 10.625rem;
     height: 3.3125rem;
     border-radius: var(--l-raduis);
-    border: 1px solid var(--color-light-gray);
+    border: .0625rem solid var(--color-light-gray);
     color: inherit;
-    font-size: 12px;
+    font-size: .625rem;
     resize: none;
     box-shadow: var(--shadow-light);
 }
@@ -186,16 +210,16 @@ button:active {
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .itemAdv {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 0px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--color-price-type);
+    margin: 1.0625rem 0rem;
+    padding-bottom: 1.0625rem;
+    border-bottom: .0625rem solid var(--color-price-type);
 }
 .advertisingContent:nth-of-type(3) .itemAdv {
     border: none;
@@ -208,11 +232,11 @@ button:active {
     align-items: center;
     justify-content: space-between;
 
-    width: 332px;
-    height: 35px;
+    width: 20.75rem;
+    height: 2.1875rem;
 
     border-radius: .4375rem;
-    border: 1px solid var(--color-light-gray);
+    border: .0625rem solid var(--color-light-gray);
     box-shadow: var(--shadow-light);
 
     overflow: hidden;
@@ -220,7 +244,7 @@ button:active {
 
 .btnCost {
     background-color: var(--color-light-gray);
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 900;
 
     width: 6.9375rem;
@@ -236,10 +260,9 @@ button:active {
 // }
 
 .btnSale {
-    font-size: 12px;
+    font-size: .75rem;
     width: 4.375rem;
-    border-left: 1px solid var(--color-light-gray);
-    border-right: 1px solid var(--color-light-gray);
+    border-left: .0625rem solid var(--color-light-gray);
     height: 100%;
 }
 
@@ -247,20 +270,19 @@ button:active {
     font-size: .75rem;
     margin-left: .75rem;
     margin-right: .0725rem;
-    font-size: 12px;
+    font-size: .75rem;
 
-    width: 135px;
+    width: 8.4375rem;
 }
 
 .priceType {
     width: 4.375rem;
-    border-left: 1px solid var(--color-light-gray);
-    border-right: 1px solid var(--color-light-gray);
+    border-left: .0625rem solid var(--color-light-gray);
     height: 100%;
 }
 
 .number {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     margin-right: 1.0625rem;
 }
@@ -290,19 +312,26 @@ button:active {
     align-items: center;
     justify-content: space-between;
 
-    width: 493px;
-    height: 35px;
+    width: 30.8125rem;
+    height: 2.1875rem;
 
     border-radius: .4375rem;
     border: 1px solid var(--color-dark-yellow);
     box-shadow: var(--shadow-light);
 
+    margin: 1.0625rem 0rem;
     overflow: hidden; 
+}
+
+.horizontalLine {
+    height: .05rem;
+    width: 100%;
+    background-color: var(--color-price-type);
 }
 
 .btnStart {
     background-color: var(--color-dark-yellow);
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 900;
 
     width: 6.9375rem;
@@ -319,9 +348,9 @@ button:active {
 }
 
 .saleElement {
-    border-left: 1px solid var(--color-dark-yellow);
+    border-left: .0625rem solid var(--color-dark-yellow);
     height: 100%;
-    width: 77px;
+    width: 4.8125rem;
 
     display: flex;
     align-items: center;
@@ -332,14 +361,8 @@ button:active {
 .itemSale .saleElement:nth-of-type(1) {
     color: var(--color-lighter-green);
     font-weight: bold;
-    font-size: 10px;
+    font-size: .625rem;
 
-    padding: 8px;
+    padding: .7rem;
 }
-
-.datePicker {
-    
-}
-
-
   
