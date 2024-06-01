@@ -1,0 +1,76 @@
+.dropDownWrapper {
+    display: flex;
+    align-items: flex-start;
+	align-items: center;
+}
+
+.wrapperDropDown {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+
+	button {
+		background: none;
+
+		font-size: 0.75rem;
+		font-family: inherit;
+		color: inherit;
+
+		padding: 11px 10px 11px 50px;
+	}
+    ul {
+		list-style-type: none;
+		padding: 0;
+		background-color: var(--color-white);
+		text-align: center;
+		border-radius: .4375rem;
+		border: .0625rem solid var(--color-light-gray);
+		overflow: hidden;
+		box-shadow: var(--shadow);
+		position: absolute;
+		z-index: 100;
+		top: 1.875rem;
+
+		li {
+			width: 4.375rem;
+			font-size: .75rem;
+			font-weight: 500;
+
+			padding-top: .3125rem;
+			padding-bottom: .3125rem;
+			font-family: 'Roboto', sans-serif;
+			border-bottom: .0625rem solid var(--color-bottom-list);
+			&:last-of-type {
+				border-bottom: none;
+			}
+		}
+		.clickedLi {
+			background-color: var(--color-dark-blue);
+		}
+	}
+}
+.polygonDropDown {
+	margin-top: 0.125rem;
+	width: 0;
+	height: 0;
+	border-left: 0.25rem solid transparent;
+	border-right: 0.25rem solid transparent;
+	border-bottom: 0.375rem solid #99a8b2;
+}
+.polygonDropDownRotate {
+	margin-top: 0.125rem;
+	width: 0;
+	height: 0;
+	border-left: 0.25rem solid transparent;
+	border-right: 0.25rem solid transparent;
+	border-top: 0.375rem solid #99a8b2;
+	border-bottom: none;
+}
+
+.btnSort {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

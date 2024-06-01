@@ -54,6 +54,7 @@ const DropDown = ({ default_arg, args }) => {
 			<button className={style.reload_btn} onClick={handleReload}>
 				<img src={icoReload} alt='iconReload' className={style.imgIcon} />
 			</button>
+			
 			<div ref={catMenu} className={style.wrapperDropDown}>
 				<button className={style.btnSort} onClick={handleClickedHidden}>
 					{!clicked ? default_arg : selectedElement}
