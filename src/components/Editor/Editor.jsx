@@ -70,12 +70,21 @@ export const Editor = () => {
   };
 
   // block-2, input with cost adverts
-  const [costAdverts, setCostAdverts] = useState('');
+  const [costAdverts, setCostAdverts] = useState(['', '', '']);
+  
+  const handleCostAdvertsChange = (index, event) => {
+    const newCostAdverts = [...costAdverts];
+    newCostAdverts[index] = parseInt(event.target.value);
+    setCostAdverts(newCostAdverts);
+  };
 
-  const handleCostAdvertsChange = (event) => {
-    setCostAdverts(event.target.value);
-  }
-
+  // block-2, button save
+  const [save, setSave] = useState('')
+  const handleSave = () => {
+    const lastEnteredPrice = costAdverts[costAdverts.length - 1];
+    setSave(lastEnteredPrice);
+  };
+  console.log('save: ')
   // choose date in calendar, block-3
   const [startDate, setStartDate] = useState(new Date());
 
@@ -263,27 +272,35 @@ export const Editor = () => {
               Стоимость рекламы на обычных условиях
             </span>
             <div className={style.advertisingContent}>
+              {/* render 3 elements */}
+            {costAdverts.map((costAdverts, index) => (
               <div className={style.itemAdv}>
-                <span className={style.number}>1</span>
+                <span className={style.number}>{index + 1}</span>
                 <div className={style.advertisingItem}>
-                  <label htmlFor="costAdver">
+                  <label htmlFor={`costAdver${index}`}>
                     <input
                       type="number"
-                      id="costAdver"
+                      id={`costAdver${index}`}
                       className={style.inputCost}
                       placeholder="Введите стоимость"
                       value={costAdverts}
-                      onChange={handleCostAdvertsChange}
-                    />
+                      onChange={(event) => handleCostAdvertsChange(index, event)}
+              />
                   </label>
                   <button className={style.btnSale}>1/24</button>
-                  <button className={style.btnCost}>СОХРАНИТЬ</button>
+                  <button 
+                    className={style.btnCost}
+                    onClick={handleSave}
+                  >
+                    СОХРАНИТЬ
+                  </button>
                 </div>
               </div>
+            ))}
             </div>
 
             {/* ====== element 2 block 2 ====== */}
-            <div className={style.advertisingContent}>
+            {/* <div className={style.advertisingContent}>
               <div className={style.itemAdv}>
                 <span className={style.number}>2</span>
                 <div className={style.advertisingItem}>
@@ -300,15 +317,15 @@ export const Editor = () => {
 
                   <div className={style.priceType}>
                     {/* <DropDownSale /> */}
-                    {/* <DropDownSale default_arg={default_argCategory} args={'1/24'} /> */}
+                    {/* <DropDownSale default_arg={default_argCategory} args={'1/24'} />
                   </div>
                   <button className={style.btnCost}>СОХРАНИТЬ</button>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* ====== element 3 block 2 ====== */}
-            <div className={style.advertisingContent}>
+            {/* <div className={style.advertisingContent}>
               <div className={style.itemAdv}>
                 <span className={style.number}>3</span>
                 <div className={style.advertisingItem}>
@@ -323,7 +340,7 @@ export const Editor = () => {
                     />
                   </label>
 
-                  <div className={style.priceType}>
+                  <div className={style.priceType}> */}
                     {/* {sortedPriceObjects(element[0].priceObjects).map(
 					                (time, index) =>
 						                time.hot === false && (
@@ -346,7 +363,7 @@ export const Editor = () => {
 							                </button>
 						                )
 				                )} */}
-                    <select
+                    {/* <select
                       onChange={(e) =>
                         handleClickedTypePrice(parseInt(e.target.value))
                       }
@@ -372,7 +389,7 @@ export const Editor = () => {
                   <button className={style.btnCost}>СОХРАНИТЬ</button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* ====== element 1 block 3 ====== */}
           <div className={style.salesBlock}>

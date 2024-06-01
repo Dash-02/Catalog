@@ -6,13 +6,13 @@ export const CostInput = () => {
     const costobj = [
         {
             obj: {
-
+                
             }
         }
     ]
     return (
         <div>
-            
+
         </div>
     )
 }
