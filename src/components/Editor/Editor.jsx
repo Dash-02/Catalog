@@ -53,13 +53,13 @@ export const Editor = () => {
     "Юмор и приколы",
   ];
   const default_argCategory = "Не выбрано";
-
+  
   const langList = ["Русский", "Английский", "Арабский"];
   const default_argLang = "Не выбрано";
 
   const [selectedCategory, setSelectedCategory] = useState(default_argCategory);
   const [selectedLang, setSelectedLang] = useState(default_argLang);
-
+  const [idOne, setIdOne] = useState(0)
   const handleCategoryChange = (value) => {
     setSelectedCategory(value);
   };
@@ -71,7 +71,30 @@ export const Editor = () => {
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+  const [condition, setCondition] = useState([
 
+    {
+      time: 48, 
+      state: false
+    },
+    {
+      time: 72,
+      state: false
+    }, 
+    {
+      time: 0,
+      state: false
+    }, 
+    {
+      time: 1,
+      state: false
+    }, 
+    {
+      time: 2,
+      state: false
+    }, 
+])
+const [prevCondition, setPrevCondition] = useState([])
   const handleFileChange = (event) => {
     const files = event.target.files;
     if (files.length > 0) {
@@ -139,109 +162,72 @@ export const Editor = () => {
 
   // }, [setClickedTypeTime])
 
-  // const handleTypeTime = (e) => {
+const [priceSettings, setPriceSettings] = useState([
+  {
+    id: 1,
+    default_price: null,
+    current_time: 24,
+    hot_price: null,
+    hot_date: null
+  },
+  {
+    id: 2,
+    default_price: null,
+    current_time: 0,
+    hot_price: null,
+    hot_date: null
+  },
+  {
+    id: 3,
+    default_price: null,
+    current_time: 0,
+    hot_price: null,
+    hot_date: null
+  }
+])
+
+  const handleTypeTime = (key, id) => {
+
+  
+
+    const result = condition.map((element, index)=>{
+      if(element.time === key) {
+      element.state = true
+      return element
+      } else {
+        return element
+      }
+    })
     
-  //   setClickedTypeTime(parseInt(e.target.value))
-  //   // setClickedTypeTime({
-  //   //   [key] : true})
-  //   // key === condition.time ? (
-  //   // setClickedTypeTime({[key]: false,})) : setClickedTypeTime({[key] : true})
-  //   console.log(e)
-  //   console.log('usestate ', clickedTypeTime)
-  // };
-  // const handleTypeTime = (e) => {
-  //   const selectedTime = parseInt(e.target.value);
+    setCondition(result)
+    setIdOne(id)
+  
 
-  //   setClickedTypeTime((prevState) => {
-  //     const newState = { ...prevState };
+  };
+  
+  useEffect(()=>{
+    let findedTime1 = ''
+    condition.map(element => {
+      if(element.state === true){
+        findedTime1 =  element.time
+      }
+    })
 
-  //     Object.keys(newState).forEach((key) => {
-  //       newState[key] = false;
-  //     });
-  //     newState[selectedTime] = true;
+   let some = {};
 
-  //     return newState;
-  //   });
-  //   console.log(e)
-  //   console.log('usestate ', clickedTypeTime)
-  // };
-
-  const handleTypeTime = key => {
-		setClickedTypeTime(prevState => {
-			let newState = {
-				24: false,
-				48: false,
-				72: false,
-				0: false,
-				1: false,
-				2: false,
-			}
-			newState[key] = true
-			return newState
-		})
-    console.log(key)
-    console.log('usestate ', clickedTypeTime)
-	}
-
-
-  // const timeLabels = {
-  //     24: "1/24",
-  //     48: "1/48",
-  //     72: "1/72",
-  //     0: "натив",
-  //     1: "репост",
-  //     2: "б/уд",
-  //   };
-
-  const condition = [
-    {
-      time: 24,
-      state: true
-    }, 
-    {
-      time: 48, 
-      state: false
-    },
-    {
-      time: 72,
-      state: false
-    }, 
-    {
-      time: 0,
-      state: false
-    }, 
-    {
-      time: 1,
-      state: false
-    }, 
-    {
-      time: 2,
-      state: false
-    }, 
-]
-const priceSettings = [
-    {
-      id: 1,
-      default_price: null,
-      current_time: 24,
-      hot_price: null,
-      hot_date: null
-    },
-    {
-      id: 2,
-      default_price: null,
-      current_time: null,
-      hot_price: null,
-      hot_date: null
-    },
-    {
-      id: 3,
-      default_price: null,
-      current_time: null,
-      hot_price: null,
-      hot_date: null
+   const result2 = priceSettings.map(element=>{
+    if(element.id === idOne) {
+      element.current_time = findedTime1
+      return element
+    } else {
+      return element
     }
-]
+   })
+
+   console.log(some)
+   console.log("condi ", condition)
+   setPriceSettings(result2)  
+  },[condition, idOne])
 
 useEffect(() => {
   const updateRemainingTime = () => {
@@ -278,9 +264,9 @@ useEffect(() => {
         <header className={style.headerEditor}>
           <div className={style.logoEditor}>
             <img src={iconAdvix} alt="iconAdvix" />
-            <span>Advix: новости</span>
+            <span className={style.channelName}>Advix: новости</span>
           </div>
-          {(selectedCategory === default_argCategory || selectedLang === default_argLang) ? <div className={style.imgExclamation}><img src={iconExclamation} alt="!" /><span>Укажите категорию, язык и стоимость рекламы, чтобы канал появился в каталоге</span></div> : ''} {/*должно пропадать когда выполнены условия */}
+          {(selectedCategory === default_argCategory || selectedLang === default_argLang) ? <div><div className={style.imgExclamation}><span className={style.popupExcl}>Укажите категорию, язык и стоимость рекламы, чтобы канал появился в каталоге</span><img src={iconExclamation} alt="!" /></div></div> : ''}
           <div className={style.headerBtn}>
             <button className={style.btnPublish}>ОПУБЛИКОВАТЬ</button>
             <button className={style.btnDraft}>ЧЕРНОВИК</button>
@@ -368,33 +354,23 @@ useEffect(() => {
                       onChange={handleCostAdvertsChange}
                     />
                   </label>
-                  {
-                    el.id === 1 ? <select className={style.btnSale}
-                                    onChange={(e) =>
-                                      handleTypeTime(parseInt(e.target.value))
-                                  }>
-                                  {condition.map(item => (
-                                  item.time === 24 ? (
-                                  <option key={item.time} value={item.time}>
-                                  {'1/24'}
-                                  </option>
-                                  ) : null
-                              ))}
-                                  </select> : <select className={style.btnSale}
-                                    onChange={handleTypeTime}>
-                                  {condition.map(item => (
-                                    item.state === true ? null : (
-                                  <option key={item.time} value={item.time}>
-                                  {item.time === 48 ? '2/48' : ''}
-                                  {item.time === 72 ? '4/72' : ''}
-                                  {item.time === 0 ? 'б/уд' : ''}
-                                  {item.time === 1 ? 'натив' : ''}
-                                  {item.time === 2 ? 'репост' : ''} {/*{console.log(item.state)} */}
-                                  </option>)
-                              ))}
-                                  </select>
+                
+                    <h1>
+                   {priceSettings.map(elemenet=>{
+                    if(elemenet.id === el.id) {
+                      return elemenet.current_time
+                    }
+                   })}
+                    </h1>
+                  <ul style={{position: 'absolute', left: '45%'}} >
+              {
+                condition.map(element=>{
+                  if(element.state === false) {
+                    return <li onClick={()=>handleTypeTime(element.time, el.id)}>{element.time}</li>
                   }
-                  
+                })
+              }
+                  </ul>
                   <button className={style.btnCost} onClick={handleSave}>СОХРАНИТЬ</button>
                 </div>
               </div>
@@ -472,7 +448,8 @@ useEffect(() => {
             <span className={style.paramsHeader}>
               Создать горящее предложение &#128293;
             </span>
-            <div className={style.salesContent}>
+            {priceSettings.map((el) => 
+            <div className={style.salesContent} key={el.id}>
               <div className={style.itemSale}>
                 <label htmlFor="costAdver">
                   <input
@@ -503,9 +480,10 @@ useEffect(() => {
                 <button className={style.btnStart}>ЗАПУСТИТЬ</button>
               </div>
             </div>
+            )}
             <div className={style.horizontalLine}></div>
+            </div>
           </div>
-        </div>
 
         <div className={style.wrapperBtnDelete}>
           <button className={style.btnDelete} onClick={handleRemoveChannel}>
